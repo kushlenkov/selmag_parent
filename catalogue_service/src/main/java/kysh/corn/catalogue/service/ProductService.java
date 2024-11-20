@@ -1,6 +1,6 @@
-package kysh.corn.manager.service;
+package kysh.corn.catalogue.service;
 
-import kysh.corn.manager.entity.Product;
+import kysh.corn.catalogue.entity.Product;
 
 import java.util.List;
 import java.util.Optional;

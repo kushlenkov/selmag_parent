@@ -1,7 +1,8 @@
-package kysh.corn.manager.service;
+package kysh.corn.catalogue.service;
 
-import kysh.corn.manager.entity.Product;
-import kysh.corn.manager.repository.ProductRepository;
+import kysh.corn.catalogue.entity.Product;
+import kysh.corn.catalogue.repository.ProductRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

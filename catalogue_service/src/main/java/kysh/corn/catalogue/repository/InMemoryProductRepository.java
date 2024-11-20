@@ -1,6 +1,6 @@
-package kysh.corn.manager.repository;
+package kysh.corn.catalogue.repository;
 
-import kysh.corn.manager.entity.Product;
+import kysh.corn.catalogue.entity.Product;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;

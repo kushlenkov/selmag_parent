@@ -1,6 +1,6 @@
-package kysh.corn.manager.repository;
+package kysh.corn.catalogue.repository;
 
-import kysh.corn.manager.entity.Product;
+import kysh.corn.catalogue.entity.Product;
 
 import java.util.List;
 import java.util.Optional;
