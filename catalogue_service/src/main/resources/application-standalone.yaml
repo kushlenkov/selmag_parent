@@ -1,2 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.0.120:5432/catalogue
+    username: postgres
+    password: mysecretpassword
+  flyway:
+    schemas:
+      - public
+      - catalogue
 server:
   port: 8081
