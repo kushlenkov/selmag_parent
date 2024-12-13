@@ -69,8 +69,9 @@ public class ProductRestController {
     public ResponseEntity<ProblemDetail> handleNoSuchElementException(NoSuchElementException exception,
                                                                       Locale locale) {
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-                ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND,
-                this.messageSource.getMessage(exception.getMessage(), new Object[0], exception.getMessage(), locale)));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND,
+                        this.messageSource.getMessage(exception.getMessage(), new Object[0],
+                                exception.getMessage(), locale)));
     }
 }
