@@ -28,7 +28,6 @@ public class ProductRestControllerIT {
     @Test
     @Sql("/sql/products.sql")
     void findProduct_ProductExists_ReturnsProductList() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.get("/catalogue-api/products/1")
                 .with(jwt().jwt(builder -> builder.claim("scope", "view_catalogue")));
@@ -52,7 +51,6 @@ public class ProductRestControllerIT {
 
     @Test
     void findProduct_ProductDoesNotExist_ReturnsNotFound() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.get("/catalogue-api/products/1")
                 .with(jwt().jwt(builder -> builder.claim("scope", "view_catalogue")));
@@ -70,7 +68,6 @@ public class ProductRestControllerIT {
     @Test
     @Sql("/sql/products.sql")
     void findProduct_UserIsNotAuthorized_ReturnsForbidden() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.get("/catalogue-api/products/1")
                 .with(jwt());
@@ -88,7 +85,6 @@ public class ProductRestControllerIT {
     @Test
     @Sql("/sql/products.sql")
     void updateProduct_RequestIsValid_ReturnsNoContent() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.patch("/catalogue-api/products/1")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -112,7 +108,6 @@ public class ProductRestControllerIT {
     @Test
     @Sql("/sql/products.sql")
     void updateProduct_RequestIsInvalid_ReturnsBadRequest() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.patch("/catalogue-api/products/1")
                 .locale(Locale.of("ru"))
@@ -141,7 +136,6 @@ public class ProductRestControllerIT {
 
     @Test
     void updateProduct_ProductDoesNotExist_ReturnsNotFound() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.patch("/catalogue-api/products/1")
                 .locale(Locale.of("ru"))
@@ -165,7 +159,6 @@ public class ProductRestControllerIT {
 
     @Test
     void updateProduct_UserIsNotAuthorized_ReturnsForbidden() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.patch("/catalogue-api/products/1")
                 .locale(Locale.of("ru"))
@@ -190,7 +183,6 @@ public class ProductRestControllerIT {
     @Test
     @Sql("/sql/products.sql")
     void deleteProduct_ProductExists_ReturnsNoContent() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.delete("/catalogue-api/products/1")
                 .with(jwt().jwt(builder -> builder.claim("scope", "edit_catalogue")));
@@ -207,7 +199,6 @@ public class ProductRestControllerIT {
 
     @Test
     void deleteProduct_ProductDoesNotExist_ReturnsNotFound() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.delete("/catalogue-api/products/1")
                 .with(jwt().jwt(builder -> builder.claim("scope", "edit_catalogue")));
@@ -224,7 +215,6 @@ public class ProductRestControllerIT {
 
     @Test
     void deleteProduct_UserIsNotAuthorized_ReturnsForbidden() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.delete("/catalogue-api/products/1")
                 .with(jwt());

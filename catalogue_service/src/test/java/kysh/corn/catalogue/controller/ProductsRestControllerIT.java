@@ -28,7 +28,6 @@ class ProductsRestControllerIT {
     @Test
     @Sql("/sql/products.sql")
     void findProducts_ReturnsProductsList() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.get("/catalogue-api/products")
                 .param("filter", "товар")
@@ -53,7 +52,6 @@ class ProductsRestControllerIT {
     @Test
     @Sql("/sql/products.sql")
     void findProducts_UserIsNotAuthorized_ReturnsForbidden() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.get("/catalogue-api/products")
                 .param("filter", "товар")
@@ -71,7 +69,6 @@ class ProductsRestControllerIT {
 
     @Test
     void createProduct_RequestIsValid_ReturnsNewProduct() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.post("/catalogue-api/products")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -97,7 +94,6 @@ class ProductsRestControllerIT {
 
     @Test
     void createProduct_RequestIsInvalid_ReturnsProblemDetail() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.post("/catalogue-api/products")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -125,7 +121,6 @@ class ProductsRestControllerIT {
 
     @Test
     void createProduct_UserIsNotAuthorized_ReturnsForbidden() throws Exception {
-
         //given
         var requestBuilder = MockMvcRequestBuilders.post("/catalogue-api/products")
                 .contentType(MediaType.APPLICATION_JSON)
