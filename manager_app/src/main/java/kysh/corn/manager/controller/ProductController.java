@@ -48,7 +48,8 @@ public class ProductController {
     @PostMapping("edit")
     public String updateProduct(@ModelAttribute(name = "product", binding = false) Product product,
                                 UpdateProductPayload payload,
-                                Model model) {
+                                Model model,
+                                HttpServletResponse response) {
 
         try {
             this.productsRestClient.updateProduct(product.id(), payload.title(), payload.details());
@@ -56,6 +57,7 @@ public class ProductController {
             return "redirect:/catalogue/products/%d".formatted(product.id());
         } catch (BadRequestException exception) {
 
+            response.setStatus(HttpStatus.BAD_REQUEST.value());
             model.addAttribute("payload", payload);
             model.addAttribute("errors", exception.getErrors());
 

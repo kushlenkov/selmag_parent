@@ -1,10 +1,12 @@
 package kysh.corn.manager.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import kysh.corn.manager.client.BadRequestException;
 import kysh.corn.manager.entity.Product;
 import kysh.corn.manager.client.ProductsRestClient;
 import kysh.corn.manager.controller.payload.NewProductPayload;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +35,8 @@ public class ProductsController {
 
     @PostMapping("create")
     public String createProduct(NewProductPayload payload,
-                                Model model) {
+                                Model model,
+                                HttpServletResponse response) {
 
         try {
             Product product = this.productsRestClient.createProduct(payload.title(), payload.details());
@@ -41,6 +44,7 @@ public class ProductsController {
             return "redirect:/catalogue/products/%d".formatted(product.id());
         } catch (BadRequestException exception) {
 
+            response.setStatus(HttpStatus.BAD_REQUEST.value());
             model.addAttribute("payload", payload);
             model.addAttribute("errors", exception.getErrors());
 

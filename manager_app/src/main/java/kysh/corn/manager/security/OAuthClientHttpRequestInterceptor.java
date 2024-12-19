@@ -16,7 +16,7 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager;
 import java.io.IOException;
 
 @RequiredArgsConstructor
-public class OAuthClientRequestInterceptor implements ClientHttpRequestInterceptor {
+public class OAuthClientHttpRequestInterceptor implements ClientHttpRequestInterceptor {
 
     private final OAuth2AuthorizedClientManager authorizedClientManager;
 
@@ -35,7 +35,6 @@ public class OAuthClientRequestInterceptor implements ClientHttpRequestIntercept
                     OAuth2AuthorizeRequest.withClientRegistrationId(this.registrationId)
                             .principal(this.securityContextHolderStrategy.getContext().getAuthentication())
                             .build());
-
             request.getHeaders().setBearerAuth(authorizedClient.getAccessToken().getTokenValue());
         }
 

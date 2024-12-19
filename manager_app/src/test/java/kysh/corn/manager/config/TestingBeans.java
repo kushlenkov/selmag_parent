@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.http.client.JdkClientHttpRequestFactory;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepository;
 import org.springframework.web.client.RestClient;
@@ -33,6 +34,7 @@ public class TestingBeans {
 
         return new RestClientProductsRestClient(RestClient.builder()
                 .baseUrl(catalogueBaseUri)
+                .requestFactory(new JdkClientHttpRequestFactory())
                 .build()
         );
     }

@@ -1,7 +1,7 @@
 package kysh.corn.manager.config;
 
 import kysh.corn.manager.client.RestClientProductsRestClient;
-import kysh.corn.manager.security.OAuthClientRequestInterceptor;
+import kysh.corn.manager.security.OAuthClientHttpRequestInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +23,7 @@ public class ClientBeans {
         return new RestClientProductsRestClient(RestClient.builder()
                 .baseUrl(catalogueBaseUri)
                 .requestInterceptor(
-                        new OAuthClientRequestInterceptor(
+                        new OAuthClientHttpRequestInterceptor(
                                 new DefaultOAuth2AuthorizedClientManager(clientRegistrationRepository,
                                         authorizedClientRepository), registrationId))
                 .build());
